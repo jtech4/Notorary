@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premier Notary Services</title>
+  <meta name="description" content="Professional mobile notary and loan signing services for individuals, families, and businesses." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-soft: #111a2b;
+      --panel: rgba(255,255,255,0.06);
+      --panel-strong: rgba(255,255,255,0.1);
+      --text: #edf2f7;
+      --muted: #b8c2d1;
+      --line: rgba(255,255,255,0.12);
+      --gold: #d4af37;
+      --gold-soft: #f2df9b;
+      --accent: #2b6cb0;
+      --max: 1180px;
+      --radius: 22px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(212,175,55,0.15), transparent 28%),
+        radial-gradient(circle at left center, rgba(43,108,176,0.12), transparent 25%),
+        linear-gradient(180deg, #08101d 0%, #0b1220 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, #c79618 100%);
+      color: #111;
+      box-shadow: 0 12px 24px rgba(212,175,55,0.25);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.22);
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 1rem;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 16, 29, 0.74);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold), #9c7411);
+      color: #111;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(212,175,55,0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      color: var(--muted);
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 0.98;
+      margin: 1rem 0 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 640px;
+      margin: 0 0 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 650px;
+    }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold-soft);
+      margin-bottom: 0.15rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 30px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-image {
+      min-height: 520px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(8,16,29,0.15), rgba(8,16,29,0.75)),
+        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80') center/cover;
+      display: flex;
+      align-items: end;
+      padding: 1.3rem;
+    }
+
+    .floating-badge {
+      width: fit-content;
+      background: rgba(8,16,29,0.75);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .floating-badge strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .floating-badge span {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .image-panel {
+      min-height: 430px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(8,16,29,0.05), rgba(8,16,29,0.55)),
+        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80') center/cover;
+    }
+
+    .check-list {
+      padding: 0;
+      margin: 1.4rem 0 0;
+      list-style: none;
+      display: grid;
+      gap: 0.95rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      color: var(--muted);
+    }
+
+    .check {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #111;
+      background: linear-gradient(135deg, var(--gold), #c18d12);
+      font-size: 0.9rem;
+      flex: 0 0 auto;
+      margin-top: 0.05rem;
+    }
+
+    .services-grid,
+    .testimonial-grid,
+    .contact-grid,
+    .why-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 2rem;
+    }
+
+    .service-card h3,
+    .why-card h3,
+    .testimonial-card h3,
+    .contact-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .service-card p,
+    .why-card p,
+    .testimonial-card p,
+    .contact-card p,
+    .contact-card li {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .service-icon,
+    .why-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      color: var(--gold-soft);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .why-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 2rem;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 2rem;
+    }
+
+    .quote {
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--gold-soft);
+      margin-bottom: 0.7rem;
+    }
+
+    .testimonial-meta {
+      margin-top: 1rem;
+      color: #d7deea;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .coverage {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill {
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      color: #dfe7f3;
+      font-weight: 600;
+    }
+
+    .map-card {
+      min-height: 320px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(8,16,29,0.1), rgba(8,16,29,0.72)),
+        url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: end;
+      padding: 1.4rem;
+    }
+
+    .map-overlay {
+      background: rgba(8,16,29,0.76);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+      max-width: 340px;
+    }
+
+    .contact-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      margin-top: 2rem;
+      align-items: stretch;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      outline: none;
+      font: inherit;
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: #9ba9bd; }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(212,175,55,0.6);
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.08);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .cta-band {
+      padding: 1.6rem;
+      background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(43,108,176,0.12));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.3rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .grid-2,
+      .contact-grid,
+      .why-grid,
+      .services-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-image { min-height: 430px; }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 0.8rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .hero-grid,
+      .grid-2,
+      .services-grid,
+      .why-grid,
+      .testimonial-grid,
+      .contact-grid,
+      .hero-stats,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 13vw, 4rem);
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .cta-band {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <div class="brand-mark">N</div>
+        <div>
+          <div>Premier Notary Services</div>
+          <small style="display:block;color:var(--muted);font-weight:600;">Mobile Notary & Loan Signing</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#coverage">Service Area</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="#contact">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Certified • Insured • Convenient</div>
+          <h1>Fast, professional notary service that comes to you.</h1>
+          <p>
+            Trusted mobile notary and loan signing services for busy professionals, families, real estate clients,
+            and local businesses. Evening and weekend appointments available.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Schedule Appointment</a>
+            <a href="tel:+15555550123" class="btn btn-secondary">Call (555) 555-0123</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-number">Same Day</div>
+              <div class="stat-label">Appointments available in select areas</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">7 Days</div>
+              <div class="stat-label">Flexible scheduling for busy clients</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">Mobile</div>
+              <div class="stat-label">Home, office, hospital, or public meeting spot</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-image">
+            <div class="floating-badge">
+              <strong>Serving your area with confidence</strong>
+              <span>Reliable notarization for legal, personal, and real estate documents.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container grid-2">
+        <div class="image-panel"></div>
+        <div>
+          <div class="eyebrow">About the Notary</div>
+          <h2 class="section-title">Professional service with a personal touch.</h2>
+          <p class="section-copy">
+            Hi, I’m <strong>[Notary Name]</strong>, a commissioned Notary Public and certified loan signing professional.
+            My goal is to make the notarization process simple, stress-free, and accurate from start to finish.
+          </p>
+          <ul class="check-list">
+            <li><span class="check">✓</span><span>Commissioned and insured for peace of mind.</span></li>
+            <li><span class="check">✓</span><span>Experienced with real estate, power of attorney, affidavits, and more.</span></li>
+            <li><span class="check">✓</span><span>Flexible scheduling for homes, offices, hospitals, and care facilities.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="eyebrow">Services</div>
+        <h2 class="section-title">Notary solutions for everyday and urgent needs.</h2>
+        <p class="section-copy">
+          Designed for individuals, families, lenders, title companies, and business owners who need fast, dependable, and professional service.
+        </p>
+
+        <div class="services-grid">
+          <article class="card service-card">
+            <div class="service-icon">01</div>
+            <h3>Mobile Notary</h3>
+            <p>Convenient appointments at your home, office, hospital, or agreed meeting location.</p>
+          </article>
+
+          <article class="card service-card">
+            <div class="service-icon">02</div>
+            <h3>Loan Signing Services</h3>
+            <p>Professional document signing support for escrow, refinance, seller packages, and buyer packages.</p>
+          </article>
+
+          <article class="card service-card">
+            <div class="service-icon">03</div>
+            <h3>General Notarization</h3>
+            <p>Affidavits, acknowledgments, jurats, consent forms, and other common notarized documents.</p>
+          </article>
+
+          <article class="card service-card">
+            <div class="service-icon">04</div>
+            <h3>Power of Attorney</h3>
+            <p>Careful, respectful assistance for important legal and family documentation.</p>
+          </article>
+
+          <article class="card service-card">
+            <div class="service-icon">05</div>
+            <h3>Hospital & Care Visits</h3>
+            <p>Travel service for clients who need notary support at hospitals, nursing homes, or assisted living facilities.</p>
+          </article>
+
+          <article class="card service-card">
+            <div class="service-icon">06</div>
+            <h3>Business Documents</h3>
+            <p>Fast notarization for contracts, sworn statements, authorizations, and company paperwork.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-us">
+      <div class="container">
+        <div class="eyebrow">Why Choose Us</div>
+        <h2 class="section-title">Built around trust, convenience, and professionalism.</h2>
+        <p class="section-copy">
+          Clients choose us because they want prompt communication, accurate handling, and a smooth experience from booking to signature.
+        </p>
+
+        <div class="why-grid">
+          <article class="card why-card">
+            <div class="why-icon">✓</div>
+            <h3>Fast Response</h3>
+            <p>Quick call-backs and appointment coordination when timing matters.</p>
+          </article>
+
+          <article class="card why-card">
+            <div class="why-icon">✓</div>
+            <h3>Flexible Hours</h3>
+            <p>Evening and weekend availability for busy schedules and urgent needs.</p>
+          </article>
+
+          <article class="card why-card">
+            <div class="why-icon">✓</div>
+            <h3>Detail Focused</h3>
+            <p>Accurate, organized signing support with professionalism at every step.</p>
+          </article>
+
+          <article class="card why-card">
+            <div class="why-icon">✓</div>
+            <h3>Mobile Convenience</h3>
+            <p>We travel to your location so you can save time and avoid extra stress.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="eyebrow">Testimonials</div>
+        <h2 class="section-title">What clients say</h2>
+        <p class="section-copy">
+          Replace these placeholders with real reviews from Google, Facebook, Yelp, or direct client feedback.
+        </p>
+
+        <div class="testimonial-grid">
+          <article class="card testimonial-card">
+            <div class="quote">“</div>
+            <p>Very professional, on time, and made the entire process easy. I would absolutely use this service again.</p>
+            <div class="testimonial-meta">— Local Client</div>
+          </article>
+
+          <article class="card testimonial-card">
+            <div class="quote">“</div>
+            <p>We needed a mobile notary quickly, and the response time was excellent. Smooth and stress-free from start to finish.</p>
+            <div class="testimonial-meta">— Real Estate Customer</div>
+          </article>
+
+          <article class="card testimonial-card">
+            <div class="quote">“</div>
+            <p>Friendly, reliable, and clearly knowledgeable. Great communication and very convenient scheduling.</p>
+            <div class="testimonial-meta">— Business Owner</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coverage">
+      <div class="container grid-2">
+        <div>
+          <div class="eyebrow">Service Area</div>
+          <h2 class="section-title">Proudly serving local clients where they need us most.</h2>
+          <p class="section-copy">
+            Update this section with your city, county, and nearby coverage areas. This helps the site feel local and supports better SEO for search results.
+          </p>
+
+          <div class="coverage">
+            <span class="pill">Riverside County</span>
+            <span class="pill">Orange County</span>
+            <span class="pill">San Bernardino County</span>
+            <span class="pill">By Appointment</span>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <div class="map-overlay">
+            <strong style="display:block;margin-bottom:0.35rem;">Mobile appointments available</strong>
+            <span style="color:var(--muted);">Ideal for homes, offices, hospitals, title offices, and care facilities.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <div class="eyebrow">Need a notary today?</div>
+            <h2 style="margin:0.8rem 0 0.4rem;font-size:clamp(1.8rem,4vw,2.6rem);">Let’s get your documents signed properly and on time.</h2>
+            <p style="margin:0;color:var(--muted);max-width:650px;">Call now or submit the form below to request an appointment.</p>
+          </div>
+          <a href="tel:+15555550123" class="btn btn-primary">Call Now</a>
+        </div>
+
+        <div class="contact-grid">
+          <article class="card contact-card">
+            <h3>Contact Information</h3>
+            <p>Use this area for the real business phone number, email, hours, and appointment details.</p>
+            <ul class="contact-list">
+              <li><strong>Phone:</strong> (555) 555-0123</li>
+              <li><strong>Email:</strong> hello@premiernotary.com</li>
+              <li><strong>Hours:</strong> Mon–Sun | 7:00 AM – 9:00 PM</li>
+              <li><strong>Appointments:</strong> Same-day and advance booking available</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <form>
+              <div class="field-grid">
+                <input type="text" name="name" placeholder="Full name" />
+                <input type="tel" name="phone" placeholder="Phone number" />
+              </div>
+              <div class="field-grid">
+                <input type="email" name="email" placeholder="Email address" />
+                <select name="service">
+                  <option selected disabled>Select a service</option>
+                  <option>Mobile Notary</option>
+                  <option>Loan Signing</option>
+                  <option>General Notarization</option>
+                  <option>Power of Attorney</option>
+                  <option>Hospital / Care Visit</option>
+                </select>
+              </div>
+              <input type="text" name="location" placeholder="City or appointment location" />
+              <textarea name="message" placeholder="Tell us what documents you need notarized and your preferred date/time."></textarea>
+              <button type="submit" class="btn btn-primary">Request Appointment</button>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Premier Notary Services. All rights reserved.</div>
+      <div>Website mockup template for local service businesses.</div>
+    </div>
+  </footer>
+</body>
+</html>
